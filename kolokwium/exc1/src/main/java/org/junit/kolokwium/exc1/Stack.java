@@ -38,8 +38,13 @@ public class Stack implements Stackable {
 	}
 
 	public int top() {
-		// TODO Auto-generated method stub
-		return 0;
+		if(stack == null) {
+			throw new NullStackException();
+		} else if(stack.isEmpty()) {
+			throw new EmptyStackException();
+		} else {
+			return stack.get(0);
+		}
 	}
 
 }

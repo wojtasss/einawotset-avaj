@@ -1,6 +1,6 @@
 package org.junit.kolokwium.exc1.tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,29 +9,25 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.kolokwium.exc1.Stack;
+import org.junit.kolokwium.exc1.exceptions.NullStackException;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 @RunWith(Parameterized.class)
-public class StackPopCorrectTests {
+public class StackPushExceptionTest {
 	
 	private Stack stack;
-	private ArrayList<Integer> data;
-	private int expected;
+	private int data;
 	
-	public StackPopCorrectTests(ArrayList<Integer> data, int expected) {
+	public StackPushExceptionTest(int data, ArrayList<Integer> expected) {
 		this.data = data;
-		this.expected = expected;
 	}
 	
 	@Parameterized.Parameters
     public static Iterable<Object[]> data() {
         return Arrays.asList(
-                new Object[][]{ 
-                	{new ArrayList<Integer>() {{add(0, 1); }}, 1},
-                	{new ArrayList<Integer>() {{add(0, 1); add(0, 2); }}, 2},
-                	{new ArrayList<Integer>() {{add(0, 1); add(0, 2); add(0, 3); }}, 3}
-                });
+                new Object[][]{ {1, null}, {12, null}, {7, null} }
+        );
     }
 	
 	@Before
@@ -40,14 +36,18 @@ public class StackPopCorrectTests {
 	}
 
 	@Test
-	public void test() {
-		stack.setStack(data);
-		int result = stack.pop();
-		assertEquals(expected, result);
+	public void NullStackExceptionTest() {
+		stack.setStack(null);
+		try{
+			stack.push(data);
+		} catch (NullStackException ex) {
+			assertTrue(true);
+		}
 	}
 	
 	@After
 	public void tearDown() throws Exception {
 		stack = null;
 	}
+
 }

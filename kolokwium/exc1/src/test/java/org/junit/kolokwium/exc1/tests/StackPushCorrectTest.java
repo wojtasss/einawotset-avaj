@@ -31,9 +31,9 @@ public class StackPushCorrectTest {
                 new Object[][]{
                         {new ArrayList<Integer>() {{ add(0, 1); }}, 
                         		new ArrayList<Integer>() {{ add(0, 1); }} },
-                        {new ArrayList<Integer>() {{ add(0, 1); add(0, 2); }}, 
+                        {new ArrayList<Integer>() {{ add(1); add(2); }}, 
                         		new ArrayList<Integer>() {{ add(0, 1); add(0, 2); }} },
-                        {new ArrayList<Integer>() {{ add(0, 1); add(0, 5); add(0, 6); add(0, 7); }}, 
+                        {new ArrayList<Integer>() {{ add(01); add(5); add(6); add(7); }}, 
                         		new ArrayList<Integer>() {{ add(0, 1); add(0, 5); add(0, 6); add(0, 7); }} },
                 }
         );
@@ -46,7 +46,10 @@ public class StackPushCorrectTest {
 	
 	@Test
 	public void test() {
-		stack.setStack(data);
+		stack.setStack(new ArrayList<Integer>());
+		for(int e : data) {
+			stack.push(e);
+		}
 		assertEquals(expected, stack.getStack());
 	}
 

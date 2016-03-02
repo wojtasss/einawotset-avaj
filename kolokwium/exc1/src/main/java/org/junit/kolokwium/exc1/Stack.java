@@ -30,8 +30,11 @@ public class Stack implements Stackable {
 	}
 
 	public boolean isNull() {
-		// TODO Auto-generated method stub
-		return false;
+		if(stack == null) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	public int top() {

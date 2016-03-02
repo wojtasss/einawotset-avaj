@@ -54,5 +54,37 @@ public class Stack implements Stackable {
 	public ArrayList<Integer> getStack() {
 		return stack;
 	}
+	
+	public int getMaxFromStack() {
+		if(stack == null) {
+			throw new NullStackException();
+		} else if(stack.isEmpty()) {
+			throw new EmptyStackException();
+		} else {
+			int max = 0;
+			for(int e : stack) {
+				if(e > max) {
+					max = e;
+				}
+			}
+			return max;
+		}
+	}
+	
+	public int getMinFromStack() {
+		if(stack == null) {
+			throw new NullStackException();
+		} else if(stack.isEmpty()) {
+			throw new EmptyStackException();
+		} else {
+			int min = 0;
+			for(int e : stack) {
+				if(e < min) {
+					min = e;
+				}
+			}
+			return min;
+		}
+	}
 
 }

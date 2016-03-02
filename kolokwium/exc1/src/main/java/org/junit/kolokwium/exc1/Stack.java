@@ -9,7 +9,7 @@ import org.junit.kolokwium.exc1.interfaces.Stackable;
 
 public class Stack implements Stackable {
 
-	private List<Integer> stack = new ArrayList<Integer>();
+	private ArrayList<Integer> stack;
 	
 	public void push(int e) {
 		if(stack == null) {
@@ -45,6 +45,10 @@ public class Stack implements Stackable {
 		} else {
 			return stack.get(0);
 		}
+	}
+	
+	public void setStack(ArrayList<Integer> stack) {
+		this.stack = stack;
 	}
 	
 	public List<Integer> getStack() {

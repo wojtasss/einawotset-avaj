@@ -8,6 +8,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.kolokwium.exc1.Stack;
+import org.junit.kolokwium.exc1.exceptions.EmptyStackException;
 import org.junit.kolokwium.exc1.exceptions.NullStackException;
 
 public class StackPopExceptionTest {
@@ -34,7 +35,7 @@ public class StackPopExceptionTest {
 		stack.setStack(new ArrayList<Integer>());
 		try {
 			stack.pop();
-		} catch (NullStackException ex) {
+		} catch (EmptyStackException ex) {
 			assertTrue(true);
 		}
 	}

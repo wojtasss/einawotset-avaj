@@ -3,6 +3,7 @@ package org.junit.kolokwium.exc1;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.kolokwium.exc1.exceptions.EmptyStackException;
 import org.junit.kolokwium.exc1.exceptions.NullStackException;
 import org.junit.kolokwium.exc1.interfaces.Stackable;
 
@@ -19,8 +20,13 @@ public class Stack implements Stackable {
 	}
 
 	public int pop() {
-		// TODO Auto-generated method stub
-		return 0;
+		if(stack == null) {
+			throw new NullStackException();
+		} else if(stack.isEmpty()) {
+			throw new EmptyStackException();
+		} else {
+			return stack.remove(0);
+		}
 	}
 
 	public boolean isNull() {

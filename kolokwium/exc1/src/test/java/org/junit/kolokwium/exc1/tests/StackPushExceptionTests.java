@@ -36,7 +36,7 @@ public class StackPushExceptionTests {
 	}
 
 	@Test
-	public void test() {
+	public void NullStackExceptionTest() {
 		stack.setStack(null);
 		try{
 			stack.push(data);

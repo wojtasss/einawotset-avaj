@@ -61,7 +61,7 @@ public class Stack implements Stackable {
 		} else if(stack.isEmpty()) {
 			throw new EmptyStackException();
 		} else {
-			int max = 0;
+			int max = stack.get(0);
 			for(int e : stack) {
 				if(e > max) {
 					max = e;
@@ -77,7 +77,7 @@ public class Stack implements Stackable {
 		} else if(stack.isEmpty()) {
 			throw new EmptyStackException();
 		} else {
-			int min = 0;
+			int min = stack.get(0);
 			for(int e : stack) {
 				if(e < min) {
 					min = e;

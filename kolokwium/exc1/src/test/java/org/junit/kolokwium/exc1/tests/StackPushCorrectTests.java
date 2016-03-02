@@ -17,8 +17,8 @@ import org.junit.runners.Parameterized;
 public class StackPushCorrectTests {
 	
 	private Stack stack;
-	private List<Integer> data;
-	private List<Integer> expected;
+	private ArrayList<Integer> data;
+	private ArrayList<Integer> expected;
 	
 	public StackPushCorrectTests(ArrayList<Integer> data, ArrayList<Integer> expected) {
 		this.data = data;
@@ -46,9 +46,7 @@ public class StackPushCorrectTests {
 	
 	@Test
 	public void test() {
-		for(int element : data) {
-			stack.push(element);
-		}
+		stack.setStack(data);
 		assertEquals(expected, stack.getStack());
 	}
 

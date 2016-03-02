@@ -19,13 +19,13 @@ public class Stack implements Stackable {
 		}
 	}
 
-	public int pop() {
+	public void pop() {
 		if(stack == null) {
 			throw new NullStackException();
 		} else if(stack.isEmpty()) {
 			throw new EmptyStackException();
 		} else {
-			return stack.remove(0);
+			stack.remove(0);
 		}
 	}
 
@@ -51,7 +51,7 @@ public class Stack implements Stackable {
 		this.stack = stack;
 	}
 	
-	public List<Integer> getStack() {
+	public ArrayList<Integer> getStack() {
 		return stack;
 	}
 

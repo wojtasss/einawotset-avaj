@@ -17,9 +17,9 @@ public class StackPopCorrectTest {
 	
 	private Stack stack;
 	private ArrayList<Integer> data;
-	private int expected;
+	private ArrayList<Integer> expected;
 	
-	public StackPopCorrectTest(ArrayList<Integer> data, int expected) {
+	public StackPopCorrectTest(ArrayList<Integer> data, ArrayList<Integer> expected) {
 		this.data = data;
 		this.expected = expected;
 	}
@@ -28,9 +28,12 @@ public class StackPopCorrectTest {
     public static Iterable<Object[]> data() {
         return Arrays.asList(
                 new Object[][]{ 
-                	{new ArrayList<Integer>() {{add(0, 1); }}, 1},
-                	{new ArrayList<Integer>() {{add(0, 1); add(0, 2); }}, 2},
-                	{new ArrayList<Integer>() {{add(0, 1); add(0, 2); add(0, 3); }}, 3}
+                	{new ArrayList<Integer>() {{ add(0, 1); }}, 
+                		new ArrayList<Integer>()},
+                	{new ArrayList<Integer>() {{ add(0, 1); add(0, 2); }},
+                		new ArrayList<Integer>() {{ add(0, 1); }}},
+                	{new ArrayList<Integer>() {{ add(0, 1); add(0, 2); add(0, 3); }},
+                		new ArrayList<Integer>() {{ add(0, 1); add(0, 2); }}}
                 });
     }
 	
@@ -42,7 +45,8 @@ public class StackPopCorrectTest {
 	@Test
 	public void test() {
 		stack.setStack(data);
-		int result = stack.pop();
+		stack.pop();
+		ArrayList<Integer> result = stack.getStack();
 		assertEquals(expected, result);
 	}
 	

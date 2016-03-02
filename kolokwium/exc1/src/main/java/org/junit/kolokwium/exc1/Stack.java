@@ -46,5 +46,9 @@ public class Stack implements Stackable {
 			return stack.get(0);
 		}
 	}
+	
+	public List<Integer> getStack() {
+		return stack;
+	}
 
 }

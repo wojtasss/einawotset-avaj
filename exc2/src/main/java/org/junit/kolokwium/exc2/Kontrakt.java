@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
+import org.junit.kolokwium.exc2.exception.DivisorEqualsZeroException;
+import org.junit.kolokwium.exc2.exception.NegativeNumberException;
 import org.junit.kolokwium.exc2.exception.NieudanyPsikusExcpetion;
 import org.junit.kolokwium.exc2.interfaces.Psikus;
 
@@ -87,13 +89,25 @@ public class Kontrakt implements Psikus {
 	}
 
 	public Integer Heheszki(Integer liczba) {
-		// TODO Auto-generated method stub
-		return null;
+		if (liczba < 0) {
+			throw new NegativeNumberException();
+		} else if (liczba == 0) {
+			return 0;
+		} else {
+			return random.nextInt(liczba);
+		}
 	}
 
-	public boolean Titit(Integer liczba_dziel) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean Titit(Integer liczba, Integer liczba_dziel) {
+		if(liczba_dziel == 0) {
+			throw new DivisorEqualsZeroException();
+		} else {
+			if(liczba % liczba_dziel == 0) {
+				return true;
+			} else {
+				return false;
+			}
+		}
 	}
 	
 	private StringBuilder replaceNumbers(StringBuilder bString, String sNumber) {

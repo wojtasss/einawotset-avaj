@@ -172,7 +172,5 @@ public class Kontrakt implements Psikus {
 			}
 			return bString;
 		}
-		
 	}
-
 }

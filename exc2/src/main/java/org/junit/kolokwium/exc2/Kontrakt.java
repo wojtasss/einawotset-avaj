@@ -1,5 +1,7 @@
 package org.junit.kolokwium.exc2;
 
+import java.text.StringCharacterIterator;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -12,19 +14,17 @@ public class Kontrakt implements Psikus {
 	private Random random = new Random();
 	
 	public Integer CyfroKrad(Integer liczba) {
-		String sNumber;
+		String sNumber = liczba.toString();
 		StringBuilder bString;
 		
 		if(liczba < 9 && liczba > -9) {
 			return null;
 		} else if(liczba > 10){
-			sNumber = liczba.toString();
 			bString = new StringBuilder(sNumber);
 			bString.deleteCharAt(random.nextInt(sNumber.length()));
 			
 			return Integer.parseInt(bString.toString());
 		} else {
-			sNumber = liczba.toString();
 			bString = new StringBuilder(sNumber);
 			bString.deleteCharAt(random.nextInt(sNumber.length()-1)+1);
 			
@@ -33,19 +33,17 @@ public class Kontrakt implements Psikus {
 	}
 
 	public Integer HultajChochla(Integer liczba) throws NieudanyPsikusExcpetion {
-		String sNumber;
+		String sNumber = liczba.toString();
 		StringBuilder bString;
 		
 		if(liczba > -10 && liczba < 10) {
 			throw new NieudanyPsikusExcpetion();
 		} else if(liczba < 99 && liczba > 9) {
-			sNumber = liczba.toString();
 			bString = new StringBuilder(sNumber);
 			bString.reverse();
 			
 			return Integer.parseInt(bString.toString());	
 		} else if(liczba > -99 && liczba < -9) {
-			sNumber = liczba.toString();
 			bString = new StringBuilder(sNumber);
 			bString.deleteCharAt(0);
 			bString.reverse();
@@ -53,13 +51,11 @@ public class Kontrakt implements Psikus {
 			
 			return Integer.parseInt(bString.toString());
 		} else if (liczba > 99) {			
-			sNumber = liczba.toString();
 			bString = new StringBuilder(sNumber);
 			bString = replaceNumbers(bString, sNumber);
 			
 			return Integer.parseInt(bString.toString());
 		} else {
-			sNumber = liczba.toString();
 			bString = new StringBuilder(sNumber);
 			bString.deleteCharAt(0);
 			bString = replaceNumbers(bString, sNumber);
@@ -70,8 +66,24 @@ public class Kontrakt implements Psikus {
 	}
 
 	public Integer Nieksztalek(Integer liczba) {
-		// TODO Auto-generated method stub
-		return null;
+		String sNumber = liczba.toString();
+		StringBuilder bString;
+		
+		if(liczba > 0) {
+			bString = new StringBuilder(sNumber);
+			bString = patternMapNumber(bString);
+			
+			return Integer.parseInt(bString.toString());
+		} else if(liczba < 0) {
+			bString = new StringBuilder(sNumber);
+			bString.deleteCharAt(0);
+			bString = patternMapNumber(bString);
+			bString.insert(0, '-');
+			
+			return Integer.parseInt(bString.toString());
+		} else {
+			return 0;
+		}
 	}
 
 	public Integer Heheszki(Integer liczba) {
@@ -100,6 +112,53 @@ public class Kontrakt implements Psikus {
 		}
 		
 		return bString;
+	}
+	
+	private StringBuilder patternMapNumber(StringBuilder bString) {
+		HashMap<Integer, Character> pattern = new HashMap<Integer, Character>() {{
+			put(3, '8');
+			put(7, '1');
+			put(6, '9');
+		}};
+		ArrayList<Integer> numbersToFind = new ArrayList<Integer>() {{
+			add(3);
+			add(7);
+			add(6);
+		}};
+		boolean endLoop = false;
+		int firstFindNumber = 0;
+		
+		for(int i=3; i>0; i--) {
+			int randomKey = numbersToFind.get(new Integer(random.nextInt(i)));
+			
+		    for(Character ch : bString.toString().toCharArray()) {
+		    	if(ch.equals(pattern.get(randomKey))) {
+		    		endLoop = true;
+		    		firstFindNumber = pattern.get(randomKey);
+		    		break;
+		    	}
+		    } 
+		    if(!endLoop) {
+		    	numbersToFind.remove(new Integer(randomKey));
+		    } else {
+		    	break;
+		    }
+		}
+		
+		if(firstFindNumber == 0) {
+			return bString;
+		} else {
+			int index = 0;
+			
+			for (Character ch : bString.toString().toCharArray()) {
+			   if(ch.equals(firstFindNumber)) {
+				   bString.replace(index, index, pattern.get(firstFindNumber).toString());
+			   }
+			   index++;
+			}
+			return bString;
+		}
+		
 	}
 
 }

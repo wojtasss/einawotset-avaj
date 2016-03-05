@@ -14,13 +14,13 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 @RunWith(Parameterized.class)
-public class KontraktHultajChochlaCorrectTest {
+public class KontraktHultajChochlaCorrectFirstCaseTest {
 
 	private Kontrakt kontrakt;
 	private int data;
 	private ArrayList<Integer> expected;
 	
-	public KontraktHultajChochlaCorrectTest(int data, ArrayList<Integer> expected) {
+	public KontraktHultajChochlaCorrectFirstCaseTest(int data, ArrayList<Integer> expected) {
 		this.data = data;
 		this.expected = expected;
 	}
@@ -31,8 +31,8 @@ public class KontraktHultajChochlaCorrectTest {
                 new Object[][]{ 
                 	{123, 
                 		new ArrayList<Integer>() {{ add(213); add(321); add(132); add(312); }}},
-                	{789,
-                		new ArrayList<Integer>() {{ add(879); add(987); add(798); add(978); }}},
+                	{-789,
+                		new ArrayList<Integer>() {{ add(-879); add(-987); add(-798); add(-978); }}},
                 	{415,
                 		new ArrayList<Integer>() {{ add(145); add(541); add(451); add(514); }}}
                 });

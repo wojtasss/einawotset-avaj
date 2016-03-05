@@ -1,6 +1,6 @@
 package org.junit.kolokwium.exc1.tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,13 +13,13 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 @RunWith(Parameterized.class)
-public class StackPopCorrectTest {
+public class StackTopCorrect {
 	
 	private Stack stack;
 	private ArrayList<Integer> data;
-	private ArrayList<Integer> expected;
+	private int expected;
 	
-	public StackPopCorrectTest(ArrayList<Integer> data, ArrayList<Integer> expected) {
+	public StackTopCorrect(ArrayList<Integer> data, int expected) {
 		this.data = data;
 		this.expected = expected;
 	}
@@ -28,12 +28,9 @@ public class StackPopCorrectTest {
     public static Iterable<Object[]> data() {
         return Arrays.asList(
                 new Object[][]{ 
-                	{new ArrayList<Integer>() {{ add(0, 1); }}, 
-                		new ArrayList<Integer>()},
-                	{new ArrayList<Integer>() {{ add(0, 1); add(0, 2); }},
-                		new ArrayList<Integer>() {{ add(0, 1); }}},
-                	{new ArrayList<Integer>() {{ add(0, 1); add(0, 2); add(0, 3); }},
-                		new ArrayList<Integer>() {{ add(0, 1); add(0, 2); }}}
+                	{new ArrayList<Integer>() {{add(0, 1); }}, 1},
+                	{new ArrayList<Integer>() {{add(0, 1); add(0, 2); }}, 2},
+                	{new ArrayList<Integer>() {{add(0, 1); add(0, 2); add(0, 3); }}, 3}
                 });
     }
 	
@@ -41,15 +38,14 @@ public class StackPopCorrectTest {
 	public void setUp() throws Exception {
 		stack = new Stack();
 	}
-
+	
 	@Test
 	public void test() {
 		stack.setStack(data);
-		stack.pop();
-		ArrayList<Integer> result = stack.getStack();
+		int result = stack.top();
 		assertEquals(expected, result);
 	}
-	
+
 	@After
 	public void tearDown() throws Exception {
 		stack = null;

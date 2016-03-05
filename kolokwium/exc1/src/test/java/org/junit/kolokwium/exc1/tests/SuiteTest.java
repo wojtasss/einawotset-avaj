@@ -5,17 +5,17 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-   StackGetMaxFromStackCorrectTest.class,
-   StackGetMaxFromStackExceptionTest.class,
-   StackGetMinFromStackCorrectTest.class,
-   StackGetMinFromStackExceptionTest.class,
-   StackIsNullTest.class,
-   StackPopCorrectTest.class,
-   StackPopExceptionTest.class,
-   StackPushCorrectTest.class,
-   StackPushExceptionTest.class,
-   StackTopCorrectTest.class,
-   StackTopExceptionTest.class
+   StackGetMaxFromStackCorrect.class,
+   StackGetMaxFromStackException.class,
+   StackGetMinFromStackCorrect.class,
+   StackGetMinFromStackException.class,
+   StackIsNull.class,
+   StackPopCorrect.class,
+   StackPopException.class,
+   StackPushCorrect.class,
+   StackPushException.class,
+   StackTopCorrect.class,
+   StackTopException.class
 })
 public class SuiteTest {   
 }  	

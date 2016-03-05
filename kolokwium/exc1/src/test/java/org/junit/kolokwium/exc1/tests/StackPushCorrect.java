@@ -14,13 +14,13 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 @RunWith(Parameterized.class)
-public class StackPushCorrectTest {
+public class StackPushCorrect {
 	
 	private Stack stack;
 	private ArrayList<Integer> data;
 	private ArrayList<Integer> expected;
 	
-	public StackPushCorrectTest(ArrayList<Integer> data, ArrayList<Integer> expected) {
+	public StackPushCorrect(ArrayList<Integer> data, ArrayList<Integer> expected) {
 		this.data = data;
 		this.expected = expected;
 	}

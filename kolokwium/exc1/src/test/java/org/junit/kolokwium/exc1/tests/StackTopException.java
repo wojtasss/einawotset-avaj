@@ -11,7 +11,7 @@ import org.junit.kolokwium.exc1.Stack;
 import org.junit.kolokwium.exc1.exceptions.EmptyStackException;
 import org.junit.kolokwium.exc1.exceptions.NullStackException;
 
-public class StackGetMinFromStackExceptionTest {
+public class StackTopException {
 	
 	private Stack stack;
 	
@@ -19,12 +19,12 @@ public class StackGetMinFromStackExceptionTest {
 	public void setUp() throws Exception {
 		stack = new Stack();
 	}
-
+	
 	@Test
 	public void NullStackExceptionTest() {
 		stack.setStack(null);
 		try {
-			stack.getMinFromStack();
+			stack.top();
 		} catch (NullStackException ex) {
 			assertTrue(true);
 		}
@@ -34,12 +34,12 @@ public class StackGetMinFromStackExceptionTest {
 	public void EmptyStackExceptionTest() {
 		stack.setStack(new ArrayList<Integer>());
 		try {
-			stack.getMinFromStack();
+			stack.top();
 		} catch (EmptyStackException ex) {
 			assertTrue(true);
 		}
 	}
-	
+
 	@After
 	public void tearDown() throws Exception {
 		stack = null;

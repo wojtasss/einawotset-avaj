@@ -13,13 +13,13 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 @RunWith(Parameterized.class)
-public class StackGetMaxFromStackCorrectTest {
+public class StackGetMaxFromStackCorrect {
 	
 	private Stack stack;
 	private ArrayList<Integer> data;
 	private int expected;
 	
-	public StackGetMaxFromStackCorrectTest(ArrayList<Integer> data, int expected) {
+	public StackGetMaxFromStackCorrect(ArrayList<Integer> data, int expected) {
 		this.data = data;
 		this.expected = expected;
 	}

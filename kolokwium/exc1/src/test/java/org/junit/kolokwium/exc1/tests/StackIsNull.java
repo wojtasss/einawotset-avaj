@@ -9,7 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.kolokwium.exc1.Stack;
 
-public class StackIsNullTest {
+public class StackIsNull {
 	
 	private Stack stack;
 	

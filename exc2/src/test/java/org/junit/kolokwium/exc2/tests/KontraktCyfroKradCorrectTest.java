@@ -32,8 +32,8 @@ public class KontraktCyfroKradCorrectTest {
                 new Object[][]{ 
                 	{123, 
                 		new ArrayList<Integer>() {{ add(12); add(23); add(13); }}},
-                	{789,
-                		new ArrayList<Integer>() {{ add(89); add(78); add(79); }}},
+                	{-789,
+                		new ArrayList<Integer>() {{ add(-89); add(-78); add(-79); }}},
                 	{415,
                 		new ArrayList<Integer>() {{ add(15); add(41); add(45);  }}}
                 });

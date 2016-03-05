@@ -15,13 +15,13 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 @RunWith(Parameterized.class)
-public class KontraktTititExceptionTest {
+public class KontraktTititException {
 
 	private Kontrakt kontrakt;
 	private ArrayList<Integer> data;
 	private Object expected;
 	
-	public KontraktTititExceptionTest(ArrayList<Integer> data, Object expected) {
+	public KontraktTititException(ArrayList<Integer> data, Object expected) {
 		this.data = data;
 	}
 	

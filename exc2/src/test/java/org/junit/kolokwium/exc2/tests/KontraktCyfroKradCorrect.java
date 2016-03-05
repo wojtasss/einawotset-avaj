@@ -1,8 +1,8 @@
 package org.junit.kolokwium.exc2.tests;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.either;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,13 +15,13 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 @RunWith(Parameterized.class)
-public class KontraktNieksztalekCorrectTest {
+public class KontraktCyfroKradCorrect {
 	
 	private Kontrakt kontrakt;
 	private int data;
 	private ArrayList<Integer> expected;
 	
-	public KontraktNieksztalekCorrectTest(int data, ArrayList<Integer> expected) {
+	public KontraktCyfroKradCorrect(int data, ArrayList<Integer> expected) {
 		this.data = data;
 		this.expected = expected;
 	}
@@ -30,12 +30,12 @@ public class KontraktNieksztalekCorrectTest {
     public static Iterable<Object[]> data() {
         return Arrays.asList(
                 new Object[][]{ 
-                	{1662333, 
-                		new ArrayList<Integer>(){{ add(1662888); add(1992333); }}},
-                	{-77789333,
-                		new ArrayList<Integer>() {{ add(-11189333); add(-77789888); }}},
-                	{6667777,
-                		new ArrayList<Integer>() {{ add(9997777); add(6661111); }}}
+                	{123, 
+                		new ArrayList<Integer>() {{ add(12); add(23); add(13); }}},
+                	{-789,
+                		new ArrayList<Integer>() {{ add(-89); add(-78); add(-79); }}},
+                	{415,
+                		new ArrayList<Integer>() {{ add(15); add(41); add(45);  }}}
                 });
     }
 	
@@ -46,8 +46,8 @@ public class KontraktNieksztalekCorrectTest {
 
 	@Test
 	public void test() {
-		int result = kontrakt.Nieksztalek(data);
-		assertThat(result, either(is(expected.get(0))).or(is(expected.get(1))));
+		int result = kontrakt.CyfroKrad(data);
+		assertThat(result, either(is(expected.get(0))).or(is(expected.get(1))).or(is(expected.get(2))));
 	}
 
 	

@@ -2,10 +2,11 @@ package org.junit.kolokwium.exc2.tests;
 
 import static org.hamcrest.Matchers.either;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,13 +15,13 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 @RunWith(Parameterized.class)
-public class KontraktHultajChochlaCorrectFirstCaseTest {
-
+public class KontraktNieksztalekCorrect {
+	
 	private Kontrakt kontrakt;
 	private int data;
 	private ArrayList<Integer> expected;
 	
-	public KontraktHultajChochlaCorrectFirstCaseTest(int data, ArrayList<Integer> expected) {
+	public KontraktNieksztalekCorrect(int data, ArrayList<Integer> expected) {
 		this.data = data;
 		this.expected = expected;
 	}
@@ -29,12 +30,12 @@ public class KontraktHultajChochlaCorrectFirstCaseTest {
     public static Iterable<Object[]> data() {
         return Arrays.asList(
                 new Object[][]{ 
-                	{123, 
-                		new ArrayList<Integer>() {{ add(213); add(321); add(132); add(312); }}},
-                	{-789,
-                		new ArrayList<Integer>() {{ add(-879); add(-987); add(-798); add(-978); }}},
-                	{415,
-                		new ArrayList<Integer>() {{ add(145); add(541); add(451); add(514); }}}
+                	{1662333, 
+                		new ArrayList<Integer>(){{ add(1662888); add(1992333); }}},
+                	{-77789333,
+                		new ArrayList<Integer>() {{ add(-11189333); add(-77789888); }}},
+                	{6667777,
+                		new ArrayList<Integer>() {{ add(9997777); add(6661111); }}}
                 });
     }
 	
@@ -45,8 +46,8 @@ public class KontraktHultajChochlaCorrectFirstCaseTest {
 
 	@Test
 	public void test() {
-		int result = kontrakt.HultajChochla(data);
-		assertThat(result, either(is(expected.get(0))).or(is(expected.get(1))).or(is(expected.get(2))).or(is(expected.get(3))));
+		int result = kontrakt.Nieksztalek(data);
+		assertThat(result, either(is(expected.get(0))).or(is(expected.get(1))));
 	}
 
 	
@@ -54,5 +55,4 @@ public class KontraktHultajChochlaCorrectFirstCaseTest {
 	public void tearDown() throws Exception {
 		kontrakt = null;
 	}
-
 }

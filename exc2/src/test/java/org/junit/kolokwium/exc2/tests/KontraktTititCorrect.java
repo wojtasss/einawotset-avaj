@@ -1,8 +1,9 @@
 package org.junit.kolokwium.exc2.tests;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.is;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import org.junit.After;
@@ -13,23 +14,27 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 @RunWith(Parameterized.class)
-public class KontraktHeheszkiCorrectTest {
-	
+public class KontraktTititCorrect {
+
 	private Kontrakt kontrakt;
-	private int data;
-	private Integer expected;
+	private ArrayList<Integer> data;
+	private boolean expected;
 	
-	public KontraktHeheszkiCorrectTest(int data, Integer expected) {
+	public KontraktTititCorrect(ArrayList<Integer> data, boolean expected) {
 		this.data = data;
+		this.expected = expected;
 	}
 	
 	@Parameterized.Parameters
     public static Iterable<Object[]> data() {
         return Arrays.asList(
                 new Object[][]{ 
-                	{123, null},
-                	{789, null},
-                	{415, null}
+                	{new ArrayList<Integer>() {{ add(123); add(8); }}, 
+                		false},
+                	{new ArrayList<Integer>() {{ add(-34555); add(5); }},
+                		true},
+                	{new ArrayList<Integer>() {{ add(1000); add(10); }},
+                		true}
                 });
     }
 	
@@ -40,8 +45,8 @@ public class KontraktHeheszkiCorrectTest {
 
 	@Test
 	public void test() {
-		int result = kontrakt.Heheszki(data);
-		assertThat(result, is(both(greaterThanOrEqualTo(0)).and(lessThan(data))));
+		boolean result = kontrakt.Titit(data.get(0), data.get(1));
+		assertThat(result, is(expected));
 	}
 
 	

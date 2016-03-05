@@ -1,6 +1,7 @@
 package org.junit.kolokwium.exc2.tests;
 
-import static org.junit.Assert.assertTrue;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 
 import java.util.Arrays;
 
@@ -8,19 +9,17 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.kolokwium.exc2.Kontrakt;
-import org.junit.kolokwium.exc2.exception.NegativeNumberException;
-import org.junit.kolokwium.exc2.exception.NieudanyPsikusExcpetion;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 @RunWith(Parameterized.class)
-public class KontraktHeheszkiExceptionTest {
-
+public class KontraktHeheszkiCorrect {
+	
 	private Kontrakt kontrakt;
 	private int data;
-	private Object expected;
+	private Integer expected;
 	
-	public KontraktHeheszkiExceptionTest(int data, Object expected) {
+	public KontraktHeheszkiCorrect(int data, Integer expected) {
 		this.data = data;
 	}
 	
@@ -28,9 +27,9 @@ public class KontraktHeheszkiExceptionTest {
     public static Iterable<Object[]> data() {
         return Arrays.asList(
                 new Object[][]{ 
-                	{-42, null},
-                	{-23, null},
-                	{-3, null}
+                	{123, null},
+                	{789, null},
+                	{415, null}
                 });
     }
 	
@@ -41,11 +40,8 @@ public class KontraktHeheszkiExceptionTest {
 
 	@Test
 	public void test() {
-		try {
-			kontrakt.Heheszki(data);
-		} catch(NegativeNumberException ex) {
-			assertTrue(true);
-		}
+		int result = kontrakt.Heheszki(data);
+		assertThat(result, is(both(greaterThanOrEqualTo(0)).and(lessThan(data))));
 	}
 
 	

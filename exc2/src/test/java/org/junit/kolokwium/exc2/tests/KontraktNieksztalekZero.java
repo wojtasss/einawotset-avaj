@@ -1,14 +1,15 @@
 package org.junit.kolokwium.exc2.tests;
 
-import static org.junit.Assert.fail;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.*;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.kolokwium.exc2.Kontrakt;
 
-public class KontraktCyfroKradNullTest {
+public class KontraktNieksztalekZero {
 	
 	private Kontrakt kontrakt;
 	
@@ -19,8 +20,8 @@ public class KontraktCyfroKradNullTest {
 	
 	@Test
 	public void test() {
-		Integer result = kontrakt.CyfroKrad(0);
-		assertThat(result, nullValue());
+		Integer result = kontrakt.Nieksztalek(0);
+		assertThat(result, is(0));
 	}
 
 	@After

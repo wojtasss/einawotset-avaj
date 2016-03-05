@@ -7,7 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.kolokwium.exc2.Kontrakt;
 
-public class KontraktHeheszkiZeroTest {
+public class KontraktHeheszkiZero {
 	
 	private Kontrakt kontrakt;
 	

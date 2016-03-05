@@ -5,18 +5,18 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-   KontraktCyfroKradCorrectTest.class,
-   KontraktCyfroKradNullTest.class,
-   KontraktHeheszkiCorrectTest.class,
-   KontraktHeheszkiExceptionTest.class,
-   KontraktHeheszkiZeroTest.class,
-   KontraktHultajChochlaCorrectFirstCaseTest.class,
-   KontraktHultajChochlaCorrectSecondCaseTest.class,
-   KontraktHultajChochlaExceptionTest.class,
-   KontraktNieksztalekCorrectTest.class,
-   KontraktNieksztalekZeroTest.class,
-   KontraktTititCorrectTest.class,
-   KontraktTititExceptionTest.class
+   KontraktCyfroKradCorrect.class,
+   KontraktCyfroKradNull.class,
+   KontraktHeheszkiCorrect.class,
+   KontraktHeheszkiException.class,
+   KontraktHeheszkiZero.class,
+   KontraktHultajChochlaCorrectFirstCase.class,
+   KontraktHultajChochlaCorrectSecondCase.class,
+   KontraktHultajChochlaException.class,
+   KontraktNieksztalekCorrect.class,
+   KontraktNieksztalekZero.class,
+   KontraktTititCorrect.class,
+   KontraktTititException.class
 })
 public class SuiteTest {   
 }  	

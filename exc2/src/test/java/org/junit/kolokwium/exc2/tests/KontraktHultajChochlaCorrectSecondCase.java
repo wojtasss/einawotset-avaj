@@ -1,11 +1,11 @@
 package org.junit.kolokwium.exc2.tests;
 
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.either;
 import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,13 +14,13 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 @RunWith(Parameterized.class)
-public class KontraktTititCorrectTest {
+public class KontraktHultajChochlaCorrectSecondCase {
 
 	private Kontrakt kontrakt;
-	private ArrayList<Integer> data;
-	private boolean expected;
+	private int data;
+	private int expected;
 	
-	public KontraktTititCorrectTest(ArrayList<Integer> data, boolean expected) {
+	public KontraktHultajChochlaCorrectSecondCase(int data, int expected) {
 		this.data = data;
 		this.expected = expected;
 	}
@@ -29,12 +29,9 @@ public class KontraktTititCorrectTest {
     public static Iterable<Object[]> data() {
         return Arrays.asList(
                 new Object[][]{ 
-                	{new ArrayList<Integer>() {{ add(123); add(8); }}, 
-                		false},
-                	{new ArrayList<Integer>() {{ add(-34555); add(5); }},
-                		true},
-                	{new ArrayList<Integer>() {{ add(1000); add(10); }},
-                		true}
+                	{-12, -21},
+                	{32, 23},
+                	{-64, -46}
                 });
     }
 	
@@ -45,7 +42,7 @@ public class KontraktTititCorrectTest {
 
 	@Test
 	public void test() {
-		boolean result = kontrakt.Titit(data.get(0), data.get(1));
+		int result = kontrakt.HultajChochla(data);
 		assertThat(result, is(expected));
 	}
 
@@ -54,4 +51,5 @@ public class KontraktTititCorrectTest {
 	public void tearDown() throws Exception {
 		kontrakt = null;
 	}
+
 }

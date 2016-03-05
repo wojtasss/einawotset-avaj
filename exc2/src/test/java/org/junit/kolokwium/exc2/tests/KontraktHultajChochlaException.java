@@ -13,13 +13,13 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 @RunWith(Parameterized.class)
-public class KontraktHultajChochlaExceptionTest {
+public class KontraktHultajChochlaException {
 
 	private Kontrakt kontrakt;
 	private int data;
 	private Object expected;
 	
-	public KontraktHultajChochlaExceptionTest(int data, Object expected) {
+	public KontraktHultajChochlaException(int data, Object expected) {
 		this.data = data;
 	}
 	

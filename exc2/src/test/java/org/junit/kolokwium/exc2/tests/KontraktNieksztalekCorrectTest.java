@@ -13,6 +13,7 @@ import org.junit.Test;
 import org.junit.kolokwium.exc2.Kontrakt;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+
 @RunWith(Parameterized.class)
 public class KontraktNieksztalekCorrectTest {
 	
@@ -31,8 +32,8 @@ public class KontraktNieksztalekCorrectTest {
                 new Object[][]{ 
                 	{1662333, 
                 		new ArrayList<Integer>(){{ add(1662888); add(1992333); }}},
-                	{77789333,
-                		new ArrayList<Integer>() {{ add(11189333); add(77789888); }}},
+                	{-77789333,
+                		new ArrayList<Integer>() {{ add(-11189333); add(-77789888); }}},
                 	{6667777,
                 		new ArrayList<Integer>() {{ add(9997777); add(6661111); }}}
                 });

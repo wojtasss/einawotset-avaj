@@ -1,6 +1,5 @@
 package org.junit.kolokwium.exc2;
 
-import java.text.StringCharacterIterator;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -111,19 +110,15 @@ public class Kontrakt implements Psikus {
 	}
 	
 	private StringBuilder replaceNumbers(StringBuilder bString, String sNumber) {
-		HashMap<Integer, Character> randomNumbers = new HashMap<Integer, Character>();
+		ArrayList<Integer> randomIndex = new ArrayList<Integer>();
 		int rNumber;
 		
-		rNumber = random.nextInt(sNumber.length());
-		randomNumbers.put(rNumber, bString.charAt(rNumber));
-		bString.deleteCharAt(rNumber);
-		rNumber = random.nextInt(sNumber.length());
-		randomNumbers.put(rNumber, bString.charAt(rNumber));
-		bString = new StringBuilder(sNumber);
-		
-		for (Map.Entry<Integer, Character> e : randomNumbers.entrySet()) {
-		    bString.replace(e.getKey(), e.getKey(), e.getValue().toString());
-		}
+		randomIndex.add(random.nextInt(sNumber.length()));
+		while((rNumber = random.nextInt(sNumber.length())) == randomIndex.get(0));
+		randomIndex.add(rNumber);
+		Character temp = bString.charAt(randomIndex.get(0));
+		bString.setCharAt(randomIndex.get(0), bString.charAt(randomIndex.get(1)));
+		bString.setCharAt(randomIndex.get(1), temp);
 		
 		return bString;
 	}
@@ -139,38 +134,19 @@ public class Kontrakt implements Psikus {
 			add(7);
 			add(6);
 		}};
-		boolean endLoop = false;
-		int firstFindNumber = 0;
 		
 		for(int i=3; i>0; i--) {
-			int randomKey = numbersToFind.get(new Integer(random.nextInt(i)));
+			Integer randomKey = numbersToFind.get(new Integer(random.nextInt(i)));
+			System.out.println(randomKey);
 			
-		    for(Character ch : bString.toString().toCharArray()) {
-		    	if(ch.equals(pattern.get(randomKey))) {
-		    		endLoop = true;
-		    		firstFindNumber = pattern.get(randomKey);
-		    		break;
-		    	}
-		    } 
-		    if(!endLoop) {
-		    	numbersToFind.remove(new Integer(randomKey));
-		    } else {
-		    	break;
-		    }
+			if(bString.indexOf(randomKey.toString()) != -1) {
+				bString = new StringBuilder(bString.toString().replaceAll(randomKey.toString(), pattern.get(randomKey).toString()));
+				break;
+			} else {
+				numbersToFind.remove(new Integer(randomKey));
+			}
 		}
 		
-		if(firstFindNumber == 0) {
-			return bString;
-		} else {
-			int index = 0;
-			
-			for (Character ch : bString.toString().toCharArray()) {
-			   if(ch.equals(firstFindNumber)) {
-				   bString.replace(index, index, pattern.get(firstFindNumber).toString());
-			   }
-			   index++;
-			}
-			return bString;
-		}
+		return bString;
 	}
 }

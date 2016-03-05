@@ -144,7 +144,6 @@ public class Kontrakt implements Psikus {
 		
 		for(int i=3; i>0; i--) {
 			Integer randomKey = numbersToFind.get(new Integer(random.nextInt(i)));
-			System.out.println(randomKey);
 			
 			if(bString.indexOf(randomKey.toString()) != -1) {
 				bString = new StringBuilder(bString.toString().replaceAll(randomKey.toString(), pattern.get(randomKey).toString()));

@@ -17,7 +17,7 @@ public class Kontrakt implements Psikus {
 	public Integer CyfroKrad(Integer liczba) {
 		String sNumber = liczba.toString();
 		StringBuilder bString;
-		
+
 		if(liczba < 9 && liczba > -9) {
 			return null;
 		} else if(liczba > 10){
@@ -112,9 +112,16 @@ public class Kontrakt implements Psikus {
 	private StringBuilder replaceNumbers(StringBuilder bString, String sNumber) {
 		ArrayList<Integer> randomIndex = new ArrayList<Integer>();
 		int rNumber;
+		int length;
 		
-		randomIndex.add(random.nextInt(sNumber.length()));
-		while((rNumber = random.nextInt(sNumber.length())) == randomIndex.get(0));
+		if(bString.length() != sNumber.length()){
+			length = sNumber.length()-1;
+		} else {
+			length = sNumber.length();
+		}
+		
+		randomIndex.add(random.nextInt(length));
+		while((rNumber = random.nextInt(length)) == randomIndex.get(0));
 		randomIndex.add(rNumber);
 		Character temp = bString.charAt(randomIndex.get(0));
 		bString.setCharAt(randomIndex.get(0), bString.charAt(randomIndex.get(1)));

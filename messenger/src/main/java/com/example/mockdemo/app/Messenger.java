@@ -18,7 +18,14 @@ public class Messenger {
 	}
 
 	public int testConnection(String server) {
-		return 1;
+		switch (ms.checkConnection(server)) {
+			case FAILURE:
+				return 1;
+			case SUCCESS:
+				return 0;
+			default:
+				return 1;
+			}
 	}
 
 	public int sendMessage(String server, String message) {

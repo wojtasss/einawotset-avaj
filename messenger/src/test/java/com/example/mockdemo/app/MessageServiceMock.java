@@ -24,7 +24,6 @@ public class MessageServiceMock implements MessageService {
 		} else if (checkConnection(server) == ConnectionStatus.FAILURE) {
 			return SendingStatus.SENDING_ERROR;
 		} else {
-
 			if ((new Random()).nextBoolean()) {
 				return SendingStatus.SENT;
 			}

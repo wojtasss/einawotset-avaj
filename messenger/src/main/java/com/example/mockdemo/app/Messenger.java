@@ -30,7 +30,18 @@ public class Messenger {
 
 	public int sendMessage(String server, String message) {
 
-		int result = -1;
-		return result;
+		try {
+			SendingStatus sStatus = ms.send(server, message);
+			switch(sStatus) {
+				case SENT:
+					return 0;
+				case SENDING_ERROR:
+					return 1;
+				default:
+					return 2;
+			}
+		} catch (MalformedRecipientException e) {
+			return 2;
+		}
 	}
 }

@@ -29,7 +29,6 @@ public class Messenger {
 	}
 
 	public int sendMessage(String server, String message) {
-
 		try {
 			SendingStatus sStatus = ms.send(server, message);
 			switch(sStatus) {

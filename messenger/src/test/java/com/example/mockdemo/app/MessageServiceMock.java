@@ -11,15 +11,20 @@ public class MessageServiceMock implements MessageService {
 
 	@Override
 	public ConnectionStatus checkConnection(String server) {
-		if (!server.endsWith(".pl")) {
+		if(server == null) {
 			return ConnectionStatus.FAILURE;
+		} else if (!server.endsWith(".pl")) {
+			return ConnectionStatus.FAILURE;
+		} else { 
+			return ConnectionStatus.SUCCESS;
 		}
-		return ConnectionStatus.SUCCESS;
 	}
 
 	@Override
 	public SendingStatus send(String server, String message) throws MalformedRecipientException {
-		if (message == null || message.length() < 3 || server == null || server.length() < 4) {
+		if (message == null || message.length() < 3) {
+			throw new MalformedRecipientException();
+		} else if( server == null || server.length() < 4) {
 			throw new MalformedRecipientException();
 		} else if (checkConnection(server) == ConnectionStatus.FAILURE) {
 			return SendingStatus.SENDING_ERROR;

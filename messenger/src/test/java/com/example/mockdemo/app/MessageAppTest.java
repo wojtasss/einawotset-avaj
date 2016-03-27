@@ -26,57 +26,57 @@ public class MessageAppTest {
 	}
 	
 	@Test
-	public void ServerStringIsNull() {
+	public void CheckConnectionServerIsNull() {
 		assertEquals(0, messenger.testConnection(null));
 	}
 	
 	@Test
-	public void TestConnectionStringIsInvalid() {
+	public void CheckConnectionStringIsInvalid() {
 		assertEquals(0, messenger.testConnection(INVALID_SERVER_2));
 	}
 	
 	@Test
-	public void TestConnectionStringDoNotEndsWithPL() {
+	public void CheckConnectionStringDoNotEndsWithPL() {
 		assertEquals(0, messenger.testConnection(INVALID_SERVER_1));
 	}
 
 	@Test
-	public void TestConnectionStringIsValid() {
+	public void CheckConnectionStringIsValid() {
 		assertEquals(1, messenger.testConnection(VALID_SERVER));
 	}
 	
 	@Test
-	public void SendMessageServerNullMessageValid() {
+	public void SendServerNullMessageValid() {
 		assertEquals(2, messenger.sendMessage(null, VALID_MESSAGE));
 	}
 	
 	@Test
-	public void SendMessageServerValidMessageNull() {
+	public void SendServerValidMessageNull() {
 		assertEquals(2, messenger.sendMessage(VALID_SERVER, null));
 	}
 	
 	@Test
-	public void SendMessageServerInvalidNameMessageValid() {
+	public void SendServerInvalidNameMessageValid() {
 		assertEquals(1, messenger.sendMessage(INVALID_SERVER_1, VALID_MESSAGE));
 	}
 	
 	@Test 
-	public void SendMessageServerShortName() {
+	public void SendServerShortName() {
 		assertEquals(2, messenger.sendMessage(INVALID_SERVER_1, null));
 	}
 	
 	@Test
-	public void SendMessageMessageNull() {
+	public void SendMessageNull() {
 		assertEquals(2, messenger.sendMessage(VALID_SERVER, null));
 	}
 	
 	@Test
-	public void SendMessageMessageToShort() {
+	public void SendMessageToShort() {
 		assertEquals(2, messenger.sendMessage(VALID_SERVER, INVALID_MESSAGE));
 	}
 	
 	@Test
-	public void SendMessageServerAndMessageValid() {
+	public void SendServerAndMessageValid() {
 		assertThat(messenger.sendMessage(VALID_SERVER, VALID_MESSAGE), either(equalTo(0)).or(equalTo(1)));
 	}
 	

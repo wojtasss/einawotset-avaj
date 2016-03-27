@@ -1,9 +1,7 @@
 package com.example.mockdemo.app;
 
-import static org.hamcrest.CoreMatchers.either;
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.*;
 
 import org.junit.After;
 import org.junit.Before;
@@ -27,6 +25,60 @@ public class MessageAppTest {
 		messenger = new Messenger(msmock);
 	}
 	
+	@Test
+	public void ServerStringIsNull() {
+		assertEquals(0, messenger.testConnection(null));
+	}
+	
+	@Test
+	public void TestConnectionStringIsInvalid() {
+		assertEquals(0, messenger.testConnection(INVALID_SERVER_2));
+	}
+	
+	@Test
+	public void TestConnectionStringDoNotEndsWithPL() {
+		assertEquals(0, messenger.testConnection(INVALID_SERVER_1));
+	}
+
+	@Test
+	public void TestConnectionStringIsValid() {
+		assertEquals(1, messenger.testConnection(VALID_SERVER));
+	}
+	
+	@Test
+	public void SendMessageServerNullMessageValid() {
+		assertEquals(2, messenger.sendMessage(null, VALID_MESSAGE));
+	}
+	
+	@Test
+	public void SendMessageServerValidMessageNull() {
+		assertEquals(2, messenger.sendMessage(VALID_SERVER, null));
+	}
+	
+	@Test
+	public void SendMessageServerInvalidNameMessageValid() {
+		assertEquals(1, messenger.sendMessage(INVALID_SERVER_1, VALID_MESSAGE));
+	}
+	
+	@Test 
+	public void SendMessageServerShortName() {
+		assertEquals(2, messenger.sendMessage(INVALID_SERVER_1, null));
+	}
+	
+	@Test
+	public void SendMessageMessageNull() {
+		assertEquals(2, messenger.sendMessage(VALID_SERVER, null));
+	}
+	
+	@Test
+	public void SendMessageMessageToShort() {
+		assertEquals(2, messenger.sendMessage(VALID_SERVER, INVALID_MESSAGE));
+	}
+	
+	@Test
+	public void SendMessageServerAndMessageValid() {
+		assertThat(messenger.sendMessage(VALID_SERVER, VALID_MESSAGE), either(equalTo(0)).or(equalTo(1)));
+	}
 	
 	@After
 	public void tearDown() throws Exception {

@@ -3,6 +3,7 @@ package com.example.mockdemo.app;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.mock;
 import static org.easymock.EasyMock.replay;
+import static org.easymock.EasyMock.verify;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.After;
@@ -37,6 +38,7 @@ public class EasyMockMessengerTest {
 		expect(msmock.checkConnection(null)).andReturn(ConnectionStatus.FAILURE);
 		replay(msmock);
 		assertEquals(0, messenger.testConnection(null));
+		verify(msmock);
 	}
 	
 	@Test
@@ -44,6 +46,7 @@ public class EasyMockMessengerTest {
 		expect(msmock.checkConnection(VALID_SERVER)).andReturn(ConnectionStatus.SUCCESS);
 		replay(msmock);
 		assertEquals(1, messenger.testConnection(VALID_SERVER));
+		verify(msmock);
 	}
 	
 	@Test
@@ -51,6 +54,7 @@ public class EasyMockMessengerTest {
 		expect(msmock.checkConnection(INVALID_SERVER_1)).andReturn(ConnectionStatus.SUCCESS);
 		replay(msmock);
 		assertEquals(1, messenger.testConnection(INVALID_SERVER_1));
+		verify(msmock);
 	}
 	
 	@Test
@@ -58,6 +62,7 @@ public class EasyMockMessengerTest {
 		expect(msmock.checkConnection(VALID_SERVER)).andReturn(ConnectionStatus.FAILURE);
 		replay(msmock);
 		assertEquals(0, messenger.testConnection(VALID_SERVER));
+		verify(msmock);
 	}
 	
 	@Test
@@ -65,6 +70,7 @@ public class EasyMockMessengerTest {
 		expect(msmock.send(null, null)).andThrow(new MalformedRecipientException());
 		replay(msmock);
 		assertEquals(2, messenger.sendMessage(null, null));
+		verify(msmock);
 	}
 	
 	@Test
@@ -72,6 +78,7 @@ public class EasyMockMessengerTest {
 		expect(msmock.send(VALID_SERVER, null)).andThrow(new MalformedRecipientException());
 		replay(msmock);
 		assertEquals(2, messenger.sendMessage(VALID_SERVER, null));
+		verify(msmock);
 	}
 	
 	@Test
@@ -79,6 +86,7 @@ public class EasyMockMessengerTest {
 		expect(msmock.send(INVALID_SERVER_2, VALID_MESSAGE)).andThrow(new MalformedRecipientException());
 		replay(msmock);
 		assertEquals(2, messenger.sendMessage(INVALID_SERVER_2, VALID_MESSAGE));
+		verify(msmock);
 	}
 	
 	@Test
@@ -86,6 +94,7 @@ public class EasyMockMessengerTest {
 		expect(msmock.send(INVALID_SERVER_2, INVALID_MESSAGE)).andThrow(new MalformedRecipientException());
 		replay(msmock);
 		assertEquals(2, messenger.sendMessage(INVALID_SERVER_2, INVALID_MESSAGE));
+		verify(msmock);
 	}
 	
 	@Test
@@ -93,6 +102,7 @@ public class EasyMockMessengerTest {
 		expect(msmock.send(INVALID_SERVER_2, null)).andThrow(new MalformedRecipientException());
 		replay(msmock);
 		assertEquals(2, messenger.sendMessage(INVALID_SERVER_2, null));
+		verify(msmock);
 	}
 	
 	@Test
@@ -100,6 +110,7 @@ public class EasyMockMessengerTest {
 		expect(msmock.send(null, VALID_MESSAGE)).andThrow(new MalformedRecipientException());
 		replay(msmock);
 		assertEquals(2, messenger.sendMessage(null, VALID_MESSAGE));
+		verify(msmock);
 	}
 	
 	@Test
@@ -107,6 +118,7 @@ public class EasyMockMessengerTest {
 		expect(msmock.send(VALID_SERVER, INVALID_MESSAGE)).andThrow(new MalformedRecipientException());
 		replay(msmock);
 		assertEquals(2, messenger.sendMessage(VALID_SERVER, INVALID_MESSAGE));
+		verify(msmock);
 	}
 	
 	@Test
@@ -114,6 +126,7 @@ public class EasyMockMessengerTest {
 		expect(msmock.send(VALID_SERVER, VALID_MESSAGE)).andReturn(SendingStatus.SENT);
 		replay(msmock);
 		assertEquals(0, messenger.sendMessage(VALID_SERVER, VALID_MESSAGE));
+		verify(msmock);
 	}
 	
 	@Test
@@ -121,6 +134,7 @@ public class EasyMockMessengerTest {
 		expect(msmock.send(VALID_SERVER, VALID_MESSAGE)).andReturn(SendingStatus.SENDING_ERROR);
 		replay(msmock);
 		assertEquals(1, messenger.sendMessage(VALID_SERVER, VALID_MESSAGE));
+		verify(msmock);
 	}
 	
 	@After

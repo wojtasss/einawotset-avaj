@@ -14,7 +14,7 @@ public class Hash {
 		array = new Integer[SIZE];
 	}
 	
-	public void addInt(Integer x) {
+	public boolean addInt(Integer x) {
 		if(x == null) {
 			throw new NullPointerException();
 		} else {
@@ -23,17 +23,18 @@ public class Hash {
 				
 				if(array[hash] == null) {
 					array[hash] = new Integer(x);
-					break;
+					return true;
 				} else {
 					if(i == SIZE-1) {
-						throw new FullArrayException();
+						return false;
 					}
 				}
 			}
 		}
+		return false;
 	}
 	
-	public void delInt(Integer x) {
+	public boolean delInt(Integer x) {
 		if(x == null) {
 			throw new NullPointerException();
 		} else {
@@ -43,10 +44,10 @@ public class Hash {
 					
 					if(array[hash] == x) {
 						array[hash] = null;
-						return;
+						return true;
 					} else {
 						if(i == SIZE-1) {
-							throw new NotFoundException();
+							return false;
 						}
 					}
 				}
@@ -54,6 +55,7 @@ public class Hash {
 				throw new NotFoundException();
 			}
 		}
+		return false;
 	}
 	
 	public boolean searchInt(Integer x) {

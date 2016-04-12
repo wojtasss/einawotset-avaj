@@ -42,7 +42,7 @@ public class Hash {
 				for(int i=0; i<SIZE; i++) {
 					int hash = H(x, i);
 					
-					if(array[hash] == x) {
+					if(array[hash].equals(x)) {
 						array[hash] = null;
 						return true;
 					} else {
@@ -63,8 +63,8 @@ public class Hash {
 			throw new NullPointerException();
 		} else {
 			if(array[H(x,0)] != null) {
-				for(int i=0; ; i++) {
-					if(array[H(x,i)] == x) {
+				for(int i=0; i<SIZE; i++) {
+					if(array[H(x,i)].equals(x)) {
 						return true;
 					} else {
 						if(i == SIZE-1) {
@@ -76,6 +76,7 @@ public class Hash {
 				return false;
 			}
 		}
+		return false;
 	}
 	
 	private Integer h(Integer x) {

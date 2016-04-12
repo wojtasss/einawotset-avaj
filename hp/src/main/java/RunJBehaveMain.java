@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.jbehave.core.embedder.Embedder;
 import org.jbehave.core.io.LoadFromClasspath;
-import org.jbehave.core.reporters.Format;
 import org.jbehave.core.reporters.StoryReporterBuilder;
+import org.jbehave.core.reporters.StoryReporterBuilder.Format;
 
 public class RunJBehaveMain {
 
@@ -19,6 +19,10 @@ public class RunJBehaveMain {
 				    .withFormats(Format.CONSOLE, Format.TXT));
 		embedder.candidateSteps().add(new MySteps());
 		embedder.runStoriesAsPaths(storyPaths);
+	
+		/*Hash hash = new Hash();
+		hash.addInt(5);
+		System.out.println(hash.searchInt(5));
+		System.out.println(Arrays.toString(hash.getArray()));*/
 	}
-
 }

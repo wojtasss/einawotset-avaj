@@ -83,4 +83,8 @@ public class Hash {
 	private Integer H(Integer x, Integer k) {
 		return (h(x) + k) % SIZE;
 	}
+	
+	public Integer[] getArray() {
+		return this.array;
+	}
 }

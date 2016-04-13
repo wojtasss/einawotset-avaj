@@ -24,35 +24,25 @@ public class Hash {
 				if(array[hash] == null) {
 					array[hash] = new Integer(x);
 					return true;
-				} else {
-					if(i == SIZE-1) {
-						return false;
-					}
 				}
 			}
+			throw new FullArrayException();
 		}
-		return false;
 	}
 	
 	public boolean delInt(Integer x) {
 		if(x == null) {
 			throw new NullPointerException();
 		} else {
-			if(array[H(x, 0)] != null) {
-				for(int i=0; i<SIZE; i++) {
+			for(int i=0; i<SIZE; i++) {
+				if(array[H(x, i)] != null) {
 					int hash = H(x, i);
-					
+						
 					if(array[hash].equals(x)) {
 						array[hash] = null;
 						return true;
-					} else {
-						if(i == SIZE-1) {
-							return false;
-						}
 					}
 				}
-			} else {
-				throw new NotFoundException();
 			}
 		}
 		return false;
@@ -62,18 +52,12 @@ public class Hash {
 		if(x == null) {
 			throw new NullPointerException();
 		} else {
-			if(array[H(x,0)] != null) {
-				for(int i=0; i<SIZE; i++) {
+			for(int i=0; i<SIZE; i++) {
+				if(array[H(x,i)] != null) {
 					if(array[H(x,i)].equals(x)) {
 						return true;
-					} else {
-						if(i == SIZE-1) {
-							return false;
-						}
 					}
 				}
-			} else {
-				return false;
 			}
 		}
 		return false;
@@ -85,9 +69,5 @@ public class Hash {
 	
 	private Integer H(Integer x, Integer k) {
 		return (h(x) + k) % SIZE;
-	}
-	
-	public Integer[] getArray() {
-		return this.array;
 	}
 }

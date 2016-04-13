@@ -37,7 +37,8 @@ public class RunJBehaveJUnitStoriesTest extends JUnitStories {
 	
 		@Override
 	protected List<String> storyPaths() {
-		return Arrays.asList("HashStory.story");
+		return Arrays.asList("HashStory.story", "HashStory2.story", "HashStory3.story", "HashStory4.story", "HashStory5.story",
+				"HashStory6.story", "HashStory7.story");
 	}
 
 }

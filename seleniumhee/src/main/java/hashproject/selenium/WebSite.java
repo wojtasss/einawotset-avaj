@@ -81,7 +81,7 @@ public class WebSite {
 	
 	public WebSite(WebDriver driver) {
 		this.driver = driver;
-		driver.get("https://checklist-rails.herokuapp.com/");
+		driver.get("https://checklist-wojtasssss.c9users.io/");
 		PageFactory.initElements(driver, this);
 	}
 	
@@ -108,10 +108,7 @@ public class WebSite {
 	}
 	
 	public void deleteItem() {
-		while(emptyListText.isDisplayed()) {
-			firstItemDeleteButton.click();
-			driver.switchTo().alert().accept();
-		}
+		firstItemDeleteButton.click();
 	}
 	
 	public void signOut() {
